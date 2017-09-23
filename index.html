@@ -157,6 +157,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-上课笔记0827 nodejs 面试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="上课笔记0827-nodejs"><a href="#上课笔记0827-nodejs" class="headerlink" title="上课笔记0827 nodejs"></a>上课笔记0827 nodejs</h1><h2 id="一-基本知识"><a href="#一-基本知识" class="headerlink" title="一.基本知识"></a>一.基本知识</h2><h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p>比喻: </p>
+<ol>
+<li>相当于合同, 客户端和服务端 之间的规定</li>
+<li>http请求方法有8种,常用有get 和 post</li>
+</ol>
+<h3 id="node"><a href="#node" class="headerlink" title="node"></a>node</h3><p>作用: 不是语言,是环境<br>具体: 基于谷歌 v8引擎,可以让js在服务器运行的 <strong>环境</strong></p>
+<h3 id="nodejs之父-RD"><a href="#nodejs之父-RD" class="headerlink" title="nodejs之父 RD"></a>nodejs之父 RD</h3><h2 id="二-面试必考"><a href="#二-面试必考" class="headerlink" title="二. 面试必考"></a>二. 面试必考</h2><h3 id="js单线程-队列-先进先出"><a href="#js单线程-队列-先进先出" class="headerlink" title="js单线程 (队列,先进先出"></a>js单线程 (队列,先进先出</h3><p>问题: 一条队伍,输入输出阻塞,I/O</p>
+<h3 id="非阻塞式I-O"><a href="#非阻塞式I-O" class="headerlink" title="非阻塞式I/O"></a>非阻塞式I/O</h3><p>特点: 性能高</p>
+<h3 id="事件驱动"><a href="#事件驱动" class="headerlink" title="事件驱动"></a>事件驱动</h3><p>本质: 多线程 (底层有线程池<br>过程: 处理事件function,把回调callback返回到事件中</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>js单线程,但nodejs采用非阻塞i/O,通过<strong>事件循环</strong>,开辟线程池,多线程<br>把回调放到队列.</p>
+<h3 id="企业开发"><a href="#企业开发" class="headerlink" title="企业开发"></a>企业开发</h3><p>小型系统:选课之类的</p>
+<h2 id="三-helloworld-图片-外链css"><a href="#三-helloworld-图片-外链css" class="headerlink" title="三. helloworld + 图片 + 外链css"></a>三. helloworld + 图片 + 外链css</h2><p>文字 +  标签:<br>res.url == ‘/xxx’        //虚拟路由<br>  res.writeHead( 200 , {‘Content-Type’:’text/html;utf8’} )<br>  res.end(‘内容’);<br>图片 + mp3:<br>res.url == ‘/xxx’<br>fs.readFile(‘./test/xixi.jpg’,function(err,data){<br>  res.writeHead( 200 , {‘Content-Type’:’text/image;utf8’} )<br>  res.end(‘内容’);<br>外链 + html + css<br>res.url == ‘/xxx’<br>fs.readFile(‘./test/xixi.html’,function(err,data){<br>  res.writeHead( 200 , {‘Content-Type’:’text/css;utf8’} )<br>  res.end(‘内容’);</p>
+<h2 id="四-url模块"><a href="#四-url模块" class="headerlink" title="四. url模块"></a>四. url模块</h2><p>重点关心:<br>host    &gt;hostname主机名 + port 端口号<br>path    &gt;path路径    + search(?+query) ?和参数</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h3><p>var urlO = url.parse(req.url,true)   //请求的路径.    true是把search从str变回对象obj<br>var pathname = urlO.path<br>注意: 字符串和obj不能相加,会报错</p>
+<h2 id="五-过滤favorite-ico"><a href="#五-过滤favorite-ico" class="headerlink" title="五. 过滤favorite.ico"></a>五. 过滤favorite.ico</h2><p>+<br>if(res.url=’/favicon.ico’){<br>  return;<br>}</p>
+<h2 id="六-iterator遍历"><a href="#六-iterator遍历" class="headerlink" title="六. iterator遍历"></a>六. iterator遍历</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h3><p>相当于for (let = i…</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码:"></a>代码:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">;(func iterator(i)&#123;</div><div class="line">  	fsxxxxxx</div><div class="line"> 	iterator(i+1);</div><div class="line">&#125;)(0);</div></pre></td></tr></table></figure>
+<p>步骤:<br>判断停止:  if(i==){return}<br>累加:  iterator(i+1);</p>
+<h2 id="七-简历制作"><a href="#七-简历制作" class="headerlink" title="七. 简历制作"></a>七. 简历制作</h2><p>页数: 2-3页<br>结构:<br>//基本<br>    姓名,电话,邮箱<br>    年龄: 25<br>    基本信息: 四六级证书<br>    不写籍贯民族<br>//掌握技能<br>    面试: 存储本地数据方法: cookie &lt; 客户端.数据库<br>    sql语句存储数据<br>    weui框架<br>    sass<br>//工作经历<br>    公司: 不要超过3家公司<br>    工作职责: 不涉及任何技术知识点<br>        根据原型图完成界面搭建<br>        后台人员接口,调试接口<br>            问:接口多少套?<br>            答:1套<br>        修复项目经理bug<br>            问:如何解决bug<br>            答:bug版本管理,candao<br>//项目<br>    名称:<br>    简介:<br>    模块:<br>    使用技术:不少于5条,最多8条<br>    流程:<br>        搭建界面 bootstrap<br>        网络请求 ajax<br>        数据绑定 框架<br>        架构 mvc/mvvm<br>        适配布局  disflex<br>        优化  less<br>        数据存储  mysql<br>    注意: 不要瞎扯<br>    优雅回答: 这个是同事写的模块<br>//自我评价<br>    不写缺点</p>
+<p>其他: 反向代理?</p>
+<h2 id="八-star法则-不重要"><a href="#八-star法则-不重要" class="headerlink" title="八. star法则(不重要)"></a>八. star法则(不重要)</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/23/上课笔记0827 nodejs 面试/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
